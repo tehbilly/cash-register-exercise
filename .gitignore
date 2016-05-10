@@ -1,0 +1,12 @@
+## OS generated files
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+## External - vendoring is good, but not today
+/node_modules
+/typings
+
+## Build/dist
+/dist
