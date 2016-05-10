@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Soon. Scaffolding first.\" && exit 1",
     "build": "rimraf dist && webpack --progress --profile --bail",
-    "server": "webpack-dev-server --inline --progress --colors --port 3000",
+    "server:dev": "webpack-dev-server --inline --progress --colors --host 0.0.0.0 --port 3000",
     "postinstall": "typings install"
   },
   "repository": {
@@ -38,6 +38,7 @@
     "typings": "^0.8.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
     "zone.js": "^0.6.6"
   },
   "devDependencies": {}
