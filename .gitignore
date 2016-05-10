@@ -10,3 +10,8 @@ Thumbs.db
 
 ## Build/dist
 /dist
+
+## Compiled typescript
+/app/**/*.js.map
+/app/**/*.js
+!/app/public/**/*.js
