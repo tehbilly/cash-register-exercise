@@ -1,0 +1,43 @@
+<div class="card" style="margin: 5px;">
+  <div class="card-header">
+    Order Details
+    <small *ngIf="order.orderNumber">{{ order.orderNumber }}</small>
+  </div>
+  <!-- <div class="card-block"> -->
+    <table class="table table-hover table-sm table-bordered card-block">
+      <thead>
+        <th>#</th>
+        <th>Item</th>
+        <th>$</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of order.items">
+          <td>{{ entry.quantity }}</td>
+          <td>{{ entry.item.name }}</td>
+          <td>${{ entry.quantity * entry.item.price | number:1.2 }}</td>
+        </tr>
+        <!-- Super fancy subtotals -->
+        <tr>
+          <td colspan="2" style="text-align: right;">Subtotal:</td>
+          <td>$...</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: right;">Sales Tax:</td>
+          <td>$...</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: right;">Grand Total:</td>
+          <td>$...</td>
+        </tr>
+      </tbody>
+    </table>
+  <!-- </div> -->
+  <div class="card-footer">
+    <button class="btn disabled">Void Item (hide)</button>
+    <button
+      class="btn btn-success pull-xs-right"
+      [class.disabled]="order.items == 0">
+        Pay Now
+    </button>
+  </div>
+</div>

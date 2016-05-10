@@ -1,0 +1,18 @@
+<nav class="bg-faded navbar navbar-full navbar-light" id="navbar">
+  <a class="navbar-brand">
+    <span>Cash Register Exercise</span>
+  </a>
+  <ul class="nav navbar-nav pull-xs-right">
+    <li class="nav-item active">
+      <a class="nav-link" [routerLink]="['/']">Order Entry</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Order History</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="section">
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>

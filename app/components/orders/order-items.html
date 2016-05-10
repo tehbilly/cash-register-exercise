@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Oh the horror. I'm no designer! I'm just following the mock layout -->
+    <div *ngFor="let item of availableItems" class="col-xs-3">
+      <div
+        class="btn btn-primary btn-lg btn-block"
+        style="margin: 5px;"
+        (click)="selectItem(item)">
+          {{item.name}}
+      </div>
+    </div>
+  </div>
+</div>
