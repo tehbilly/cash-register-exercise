@@ -1,9 +1,10 @@
 export class Order {
   orderNumber: number;
   timestamp: Date;
-  subTotal: number;
-  totalTax: number;
-  grandTotal: number;
+  subTotal: number = 0.00;
+  taxPercent: number = 0.053; // Virginia tax chosen just 'cause
+  taxTotal: number = 0.00;
+  grandTotal: number = 0.00;
 
   items: OrderLineItem[] = [];
 
@@ -16,6 +17,30 @@ export class Order {
     }
 
     this.items.push(new OrderLineItem(item));
+
+    this.updateTotals();
+  }
+
+  updateTotals() {
+    // Calculate new subtotal
+    let sub = 0.00;
+    for (let li of this.items) {
+      sub += li.quantity * li.item.price;
+    }
+    this.subTotal = sub;
+
+    // Ze tax
+    this.taxTotal = this.subTotal * this.taxPercent;
+
+    // Final-ee
+    this.grandTotal = this.subTotal + this.taxTotal;
+  }
+
+  voidLineItem(line: OrderLineItem) {
+    this.items = this.items.filter((li) => {
+      return li != line;
+    });
+    this.updateTotals();
   }
 }
 

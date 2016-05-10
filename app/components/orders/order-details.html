@@ -11,29 +11,36 @@
         <th>$</th>
       </thead>
       <tbody>
-        <tr *ngFor="let entry of order.items">
-          <td>{{ entry.quantity }}</td>
-          <td>{{ entry.item.name }}</td>
-          <td>${{ entry.quantity * entry.item.price | number:1.2 }}</td>
+        <tr
+          *ngFor="let entry of order.items"
+          style="cursor: pointer"
+          [class.table-info]="entry == selectedLineItem"
+          (click)="selectLineItem(entry)">
+            <td>{{ entry.quantity }}</td>
+            <td>{{ entry.item.name }}</td>
+            <td>${{ entry.quantity * entry.item.price | number:"1.2-2" }}</td>
         </tr>
         <!-- Super fancy subtotals -->
         <tr>
           <td colspan="2" style="text-align: right;">Subtotal:</td>
-          <td>$...</td>
+          <td>${{ order.subTotal | number:"1.2-2" }}</td>
         </tr>
         <tr>
           <td colspan="2" style="text-align: right;">Sales Tax:</td>
-          <td>$...</td>
+          <td>${{ order.taxTotal | number:"1.2-2" }}</td>
         </tr>
         <tr>
           <td colspan="2" style="text-align: right;">Grand Total:</td>
-          <td>$...</td>
+          <td>${{ order.grandTotal | number:"1.2-2" }}</td>
         </tr>
       </tbody>
     </table>
   <!-- </div> -->
   <div class="card-footer">
-    <button class="btn disabled">Void Item (hide)</button>
+    <button
+      class="btn btn-danger"
+      *ngIf="selectedLineItem != null"
+      (click)="voidSelectedItem()">Void Item</button>
     <button
       class="btn btn-success pull-xs-right"
       [class.disabled]="order.items == 0">
