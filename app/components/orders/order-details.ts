@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,7 +8,8 @@ import { Order, OrderLineItem, OrderItem } from './order';
 
 @Component({
   selector: 'order-details',
-  template: require('./order-details.html')
+  template: require('./order-details.html'),
+  directives: [ROUTER_DIRECTIVES]
 })
 export class OrderDetailsComponent {
   order: Order;

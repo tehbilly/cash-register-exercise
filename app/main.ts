@@ -5,5 +5,5 @@ import { AppComponent } from './components/app/app';
 
 bootstrap(AppComponent, [ROUTER_PROVIDERS])
   .catch((err) => {
-    console.error(err);
+    console.error('Bootstrapping error: ', err);
   });

@@ -24,7 +24,8 @@ export class OrderService {
 
   newOrder() {
     this.order = new Order();
-    console.log(this.orderUpdatedSource);
+    // TODO: Properly plan out a reasonable (read: not hacky) update stream
+    // I'd love to be able to utilize the async pipe, but other areas require attention at the moment
     // this.orderUpdatedSource.next(this.order);
   }
 
@@ -44,5 +45,32 @@ export class OrderService {
     this.order.addItem(item);
 
     this.orderUpdatedSource.next(this.order);
+  }
+
+  // List of all available items
+  getAvailableItems() {
+    // Static data for now, easy to switch out later
+    return Promise.resolve([
+      {"name": "Supreme Pizza", "price": 16.99},
+      {"name": "BBQ Chicken Pizza", "price": 14.99},
+      {"name": "Veggie Pizza", "price": 12.99},
+      {"name": "Meat Lover's Pizza", "price": 17.99},
+      {"name": "Hawaiian Pizza", "price": 14.99},
+      {"name": "Supreme Calzone", "price": 8.99},
+      {"name": "BBQ Chicken Calzone", "price": 7.99},
+      {"name": "Veggie Calzone", "price": 6.99},
+      {"name": "Meat Lover's Calzone", "price": 8.99},
+      {"name": "Hawaiian Calzone", "price": 7.99},
+      {"name": "Side Salad", "price": 3.99},
+      {"name": "Caesar Salad", "price": 4.99},
+      {"name": "Cobb Salad", "price": 4.99},
+      {"name": "Chef Salad", "price": 5.99},
+      {"name": "Grilled Cheese", "price": 3.99},
+      {"name": "Coke", "price": 1.00},
+      {"name": "Diet Coke", "price": 1.00},
+      {"name": "Sprite", "price": 1.00},
+      {"name": "Dr. Pepper", "price": 1.00},
+      {"name": "Root Beer", "price": 1.00}
+    ]);
   }
 }

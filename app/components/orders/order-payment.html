@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Tender Payment
+    </div>
+    <div class="card-block">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Amount Due: <span class="pull-xs-right" id="tender-amount-due-total">$...</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-secondary">Cancel</button>
+      <button
+        class="btn btn-primary pull-xs-right"
+        [class.disabled]="tenderAmount < dueAmount">
+          Tender
+      </button>
+    </div>
+  </div>
+</div>

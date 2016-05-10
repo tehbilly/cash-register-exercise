@@ -1,16 +1,32 @@
 import { Component } from '@angular/core';
 import { Routes, Router, ROUTER_DIRECTIVES } from '@angular/router';
 
-import { OrderEntryComponent } from '../orders/order-entry';
+import { OrderService } from '../orders/order-service';
+import { OrderItemsComponent } from '../orders/order-items';
+import { OrderPaymentComponent } from '../orders/order-payment';
+import { OrderDetailsComponent } from '../orders/order-details';
 
 @Component({
   selector: 'cash-app',
   template: require('./app.html'),
   directives: [
-    ROUTER_DIRECTIVES
+    ROUTER_DIRECTIVES,
+    OrderDetailsComponent
+  ],
+  providers: [
+    OrderService
   ]
 })
 @Routes([
-  {path: '/', component: OrderEntryComponent}
+  {
+    path: '/',
+    component: OrderItemsComponent
+  },
+  {
+    path: '/tender',
+    component: OrderPaymentComponent
+  }
 ])
-export class AppComponent {}
+export class AppComponent {
+  constructor(private orderService: OrderService) {}
+}

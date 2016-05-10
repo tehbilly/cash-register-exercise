@@ -41,10 +41,11 @@
       class="btn btn-danger"
       *ngIf="selectedLineItem != null"
       (click)="voidSelectedItem()">Void Item</button>
-    <button
+    <a
       class="btn btn-success pull-xs-right"
-      [class.disabled]="order.items == 0">
+      [class.disabled]="order.items == 0"
+      [routerLink]="['/tender']">
         Pay Now
-    </button>
+    </a>
   </div>
 </div>
