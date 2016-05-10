@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Routes, Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { OrderService } from '../orders/order-service';
@@ -27,6 +27,12 @@ import { OrderDetailsComponent } from '../orders/order-details';
     component: OrderPaymentComponent
   }
 ])
-export class AppComponent {
-  constructor(private orderService: OrderService) {}
+export class AppComponent implements OnInit {
+  constructor(private orderService: OrderService, private router: Router) {}
+
+  ngOnInit() {
+    // A rather pitiful attempt to wrangle the new router
+    // At least it makes me feel better
+    this.router.navigate(['/']);
+  }
 }
