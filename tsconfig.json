@@ -11,5 +11,6 @@
         "experimentalDecorators": true,
         "sourceMap": true,
         "noImplicitAny": true
-    }
+    },
+    "compileOnSave": false
 }
